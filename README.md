@@ -8,4 +8,4 @@ This repository contains the source code for a visually captivating homepage bui
 - Elegant Typography: Clean and modern typography to enhance readability.
 - Smooth Scroll: Fluid scroll behavior for seamless navigation using jQuery and jQuery-easing.
 
-* To visualize the page follow this [link](https://nobletk.github.io/My-Portfolio-Website/) to my git page.
+* To visualize the page follow this [link](https://nobletk.github.io/portfolio/) to my git page.
