@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football RL - Tarek Abouzethar</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="navbar-placeholder" data-filepath="../components/project-navbar.txt"></div>
+
+    <section class="intro-section p-4 d-flex align-items-center"
+        style="min-height: auto; padding-top: 8rem !important; padding-bottom: 5rem !important;">
+        <div class="container-fluid">
+
+            <div class="row mb-4">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-3 fw-semibold">Football RL</h1>
+                    <p class="fs-4 mt-2">Unity Engine • MLAgents • Reinforcement Learning</p>
+                    <div class="github-button mt-4">
+                        <a href="https://github.com/nobletk/footballRL" target="_blank" title="View Source on GitHub">
+                            <svg viewBox="0 0 128 128">
+                                <g fill="currentColor">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M64 1.512c-23.493 0-42.545 19.047-42.545 42.545 0 18.797 12.19 34.745 29.095 40.37 2.126.394 2.907-.923 2.907-2.047 0-1.014-.04-4.366-.058-7.92-11.837 2.573-14.334-5.02-14.334-5.02-1.935-4.918-4.724-6.226-4.724-6.226-3.86-2.64.29-2.586.29-2.586 4.273.3 6.523 4.385 6.523 4.385 3.794 6.504 9.953 4.623 12.38 3.536.383-2.75 1.485-4.628 2.702-5.69-9.45-1.075-19.384-4.724-19.384-21.026 0-4.645 1.662-8.44 4.384-11.42-.442-1.072-1.898-5.4.412-11.26 0 0 3.572-1.142 11.7 4.363 3.395-.943 7.035-1.416 10.65-1.432 3.616.017 7.258.49 10.658 1.432 8.12-5.504 11.688-4.362 11.688-4.362 2.316 5.86.86 10.187.418 11.26 2.728 2.978 4.378 6.774 4.378 11.42 0 16.34-9.953 19.938-19.427 20.99 1.526 1.32 2.886 3.91 2.886 7.88 0 5.692-.048 10.273-.048 11.674 0 1.13.766 2.458 2.922 2.04 16.896-5.632 29.07-21.574 29.07-40.365C106.545 20.56 87.497 1.512 64 1.512z">
+                                    </path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h3 class="fw-semibold mb-3 border-bottom pb-2" style="border-color: var(--color-2) !important;">
+                        Demos</h3>
+                    <div id="footballCarousel"
+                        class="carousel slide carousel-fade shadow-lg border border-2 rounded overflow-hidden"
+                        style="border-color: var(--color-2) !important;" data-bs-interval="false"
+                        data-bs-keyboard="false">
+
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#footballCarousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#footballCarousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <video controls mute class="d-block w-100">
+                                    <source src="../assets/videos/footballRL/complexVsBase-vid.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="carousel-item">
+                                <video controls mute class="d-block w-100">
+                                    <source src="../assets/videos/footballRL/experVsBase-vid.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#footballCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#footballCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 col-md-12 fs-5 text-center">
+                    <h3 class="fw-semibold mb-3 border-bottom pb-2" style="border-color: var(--color-2) !important;">
+                        Architecture & Environment</h3>
+                    <p>
+                        This project involves training a Reinforcement Learning agent to play football using the Google
+                        Research Football environment. The agent was trained using PPO. This project was designed to
+                        test the limits of self-play reinforcement learning in a continuous, physics-heavy environment.
+                        The agents control physical rigidbodies and must learn to navigate, jump, kick, and defend
+                        without any hardcoded behavior trees or state machines.
+                    </p>
+                    <p>
+                        One of the biggest challenges in this environment was overcoming the Nash Equilibrium—where
+                        agents realized that defending their own goal yielded a mathematically safer reward (0.0) than
+                        risking a midfield tackle (-1.0).
+                    </p>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h3 class="fw-semibold mb-3 border-bottom pb-2" style="border-color: var(--color-2) !important;">
+                        Training Metrics</h3>
+
+                    <nav class="nav nav-tabs justify-content-center mb-4 border-bottom-0" id="metricTabs"
+                        role="tablist">
+                        <button class="nav-link active fw-bold" id="rewards-tab" data-bs-toggle="tab"
+                            data-bs-target="#rewards" type="button" role="tab" aria-controls="rewards"
+                            aria-selected="true" style="color: var(--color-2);">Cumulative Rewards</button>
+
+                        <button class="nav-link fw-bold" id="length-tab" data-bs-toggle="tab" data-bs-target="#length"
+                            type="button" role="tab" aria-controls="length" aria-selected="false"
+                            style="color: var(--color-2);">Episode Length</button>
+
+                        <button class="nav-link fw-bold" id="entropy-tab" data-bs-toggle="tab" data-bs-target="#entropy"
+                            type="button" role="tab" aria-controls="entropy" aria-selected="false"
+                            style="color: var(--color-2);">Entropy</button>
+                    </nav>
+
+                    <div class="tab-content" id="metricTabsContent">
+
+                        <div class="tab-pane fade show active" id="rewards" role="tabpanel"
+                            aria-labelledby="rewards-tab">
+                            <div class="card bg-transparent border-0">
+                                <img src="../assets/img/footballRL/cumulative-reward.png"
+                                    class="card-img-top img-fluid rounded shadow-sm project-card-img"
+                                    alt="Cumulative Rewards Graph">
+                                <div class="card-body px-0 text-center project-card-body">
+                                    <h5 class="card-title fw-bold mt-2">Cumulative Rewards over Timesteps</h5>
+                                    <p class="card-text fs-5">The Big Brain (orange line) establishes an early lead in
+                                        cumulative reward and maintains the highest overall performance throughout most
+                                        of the training. Interestingly, the Baseline (grey line) struggles initially,
+                                        staying flat near -0.2 until around 600k steps, before rapidly learning and
+                                        catching up to the others. The Wildcard (teal line) shows a more gradual,
+                                        consistent learning curve than the Baseline but generally plateaus slightly
+                                        lower than the Big Brain.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="length" role="tabpanel" aria-labelledby="length-tab">
+                            <div class="card bg-transparent border-0">
+                                <img src="../assets/img/footballRL/episode-length.png"
+                                    class="card-img-top img-fluid rounded shadow-sm project-card-img"
+                                    alt="Episode Length Graph">
+                                <div class="card-body px-0 text-center project-card-body">
+                                    <h5 class="card-title fw-bold mt-2">Average Episode Length</h5>
+                                    <p class="card-text fs-5"> As the agents become more highly skilled, the average
+                                        episode lengths for all three models decrease significantly, starting near 400
+                                        and converging around 150 by the end of training. The Baseline (grey line)
+                                        maintained the maximum episode length for the first 600k steps before finally
+                                        figuring out how to score, which perfectly aligns with its delayed spike in
+                                        cumulative reward. Meanwhile, the Big Brain (orange line) learned to conclude
+                                        episodes much faster early in the training process.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="entropy" role="tabpanel" aria-labelledby="entropy-tab">
+                            <div class="card bg-transparent border-0">
+                                <img src="../assets/img/footballRL/entropy.png"
+                                    class="card-img-top img-fluid rounded shadow-sm project-card-img"
+                                    alt="Entropy Graph">
+                                <div class="card-body px-0 text-center project-card-body">
+                                    <h5 class="card-title fw-bold mt-2">Policy Entropy</h5>
+                                    <p class="card-text fs-5">Entropy measures the randomness of the agent's actions.
+                                        The Wildcard (teal line) exhibits a steadily increasing entropy curve throughout
+                                        the training session, peaking near 2.5. In contrast, both the Big Brain (orange
+                                        line) and the Baseline (grey line) show a steady decrease in entropy, gradually
+                                        dropping below 1.9. This confirms that the hyperparameter tweaks successfully
+                                        forced the Wildcard to maintain high exploration and unpredictable gameplay.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <!-- Stack -->
+            <div class="row mt-5 mb-5">
+                <div class="col-12 text-center">
+                    <h3 class="fw-semibold mb-4">Built With</h3>
+                    <div class="d-flex justify-content-center gap-4 flex-wrap">
+                        <div class="mx-2">
+                            <svg class="stack-icons" viewBox="0 0 128 128">
+                                <svg viewBox="0 0 128 128">
+                                    <path fill="currentColor"
+                                        d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z">
+                                    </path>
+                                    <path fill="currentColor"
+                                        d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8l-106.6 62z">
+                                    </path>
+                                    <path fill="#fff"
+                                        d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6zM97 66.2l.9-4.3h-4.2v-4.7h5.1L100 51h4.9l-1.2 6.1h3.8l1.2-6.1h4.8l-1.2 6.1h2.4v4.7h-3.3l-.9 4.3h4.2v4.7h-5.1l-1.2 6h-4.9l1.2-6h-3.8l-1.2 6h-4.8l1.2-6h-2.4v-4.7H97zm4.8 0h3.8l.9-4.3h-3.8l-.9 4.3z">
+                                    </path>
+                                </svg>
+                        </div>
+
+                        <div class="mx-2">
+                            <svg class="stack-icons" viewBox="0 0 128 128">
+                                <path fill="currentColor"
+                                    d="M39.47 72.877v-20.75L21.49 41.752v7.978l7.055 4.055c.277.139.277.558 0 .692l-8.393 4.844a.79.79 0 0 1-.785 0l-8.393-4.89c-.273-.136-.273-.553 0-.688l7.055-4.059v-7.979L.046 52.081v20.796-.093.093l6.915-3.966v-8.159c0-.277.325-.51.599-.325l8.392 4.844c.233.14.42.414.42.693v9.683c0 .273-.327.506-.601.32l-7.055-4.06-6.92 3.967 17.989 10.374 17.98-10.374-6.919-3.966-7.054 4.059c-.228.14-.6-.047-.6-.32V65.96a.76.76 0 0 1 .419-.692l8.392-4.845c.227-.138.599.047.599.326v8.16zm0 0">
+                                </path>
+                                <path fill="currentColor"
+                                    d="M19.737 86.295 37.72 75.919l-6.92-3.966-7.055 4.059c-.227.14-.598-.047-.598-.32v-9.683a.754.754 0 0 1 .417-.693l8.393-4.844c.226-.139.599.046.599.325v8.16l6.914 3.966V52.127L19.737 63.514zm0 0">
+                                </path>
+                                <path fill="currentColor"
+                                    d="M21.441 41.705v7.98l7.055 4.058c.279.135.279.552 0 .687l-8.391 4.844a.79.79 0 0 1-.786 0l-8.346-4.844c-.274-.135-.274-.552 0-.687l7.055-4.059v-7.979L.046 52.081l19.739 11.387L39.516 52.08Zm0 0">
+                                </path>
+                                <path fill="currentColor"
+                                    d="m15.678 75.965-7.054-4.058-6.915 3.966 17.982 10.374v-22.78L0 52.128v20.796-.092.092l6.914-3.966v-8.16c0-.277.326-.51.605-.325l8.392 4.844a.854.854 0 0 1 .412.693v9.683c-.046.227-.37.413-.645.273zm0 0">
+                                </path>
+                                <path fill="currentColor"
+                                    d="M87.612 52.127v3.966h4.886v-3.966zm-37.766 1.198v12.638c0 5.023 2.994 7.927 8.99 7.927s8.945-2.996 8.945-7.927V53.325h-5.303v12.73c0 2.118-1.2 3.595-3.641 3.595-2.63 0-3.689-1.43-3.689-3.508V53.325zm46.478 0v4.844h-2.028v3.966h2.03v7.328c0 3.321 2.029 4.246 4.843 4.152 1.333 0 2.257-.093 2.67-.232v-3.548c-.18 0-.646.046-1.058.046-1.058 0-1.706-.277-1.706-1.477v-6.269h2.763V58.17h-2.763v-4.844zm-16.552 4.38c-2.122 0-3.599.878-4.75 2.534h-.093v-2.07H70.27v15.354h4.892v-8.485c0-1.89 1.057-3.227 2.674-3.227 1.564 0 2.396 1.106 2.396 2.722v8.944h4.885v-9.962c0-3.408-1.983-5.809-5.344-5.809zm7.84.464v15.354h4.886V58.17Zm17.517 0 4.519 11.8c.645 1.618.925 2.542.925 3.187 0 1.058-.6 1.612-2.03 1.612h-1.612v3.78h3.182c3.088 0 4.519-1.245 5.764-4.84l5.302-15.539h-4.89l-2.03 6.55c-.459 1.519-.873 3.548-.873 3.548h-.046s-.512-2.076-.97-3.548l-2.076-6.549zm20.936 0a1.929 1.929 0 0 0-1.384.553 1.547 1.547 0 0 0-.413.645 2.07 2.07 0 0 0-.14.739 1.986 1.986 0 0 0 .553 1.384c.185.181.373.32.646.413.232.092.505.14.738.14.233 0 .506-.047.739-.14a2.05 2.05 0 0 0 .645-.413c.185-.185.32-.371.414-.645a2.057 2.057 0 0 0 0-1.477 1.914 1.914 0 0 0-.414-.646 1.592 1.592 0 0 0-.645-.418 2.19 2.19 0 0 0-.74-.135zm0 .506c.279 0 .506.047.739.185.227.135.412.322.553.554.138.227.185.46.185.738 0 .274-.047.506-.185.734a1.631 1.631 0 0 1-.553.558 1.388 1.388 0 0 1-.74.18 1.388 1.388 0 0 1-.737-.18 1.586 1.586 0 0 1-.552-.558 1.329 1.329 0 0 1-.187-.734c0-.277.046-.511.185-.739a1.54 1.54 0 0 1 .554-.551 1.335 1.335 0 0 1 .738-.187zm-.692.6v1.797h.413v-.6h.42l.319.599h.418l-.372-.691c.047-.093.14-.182.185-.228a.656.656 0 0 0 .093-.325.635.635 0 0 0-.093-.32c-.046-.093-.138-.14-.231-.185-.093-.048-.181-.048-.227-.048zm.413.232h.371c.048 0 .093 0 .187.046.04.041.088.088.088.228a.388.388 0 0 1-.088.232.353.353 0 0 1-.185.093h-.373zm0 0">
+                                </path>
+                            </svg>
+                        </div>
+
+                        <div class="mx-2">
+                            <svg class="stack-icons" viewBox="0 0 128 128">
+                                <path fill="currentColor"
+                                    d="M17.9 55.7l-1.7 1.7c2.7 2.7 2.7 7.2 0 9.9S9 70 6.4 67.2c-2.7-2.7-2.7-7.2 0-9.9l4.4-4.4.6-.6V49l-6.6 6.6c-3.7 3.7-3.7 9.6 0 13.2s9.6 3.7 13.2 0c3.6-3.6 3.6-9.4-.1-13.1z">
+                                </path>
+                                <circle fill="#EE4C2C" cx="14.6" cy="54.1" r="1.2"></circle>
+                                <path fill="#EE4C2C"
+                                    d="M34.9 64.1h-2.8v7.3H30V50.7h5.2c5.4 0 8 2.7 8 6.4 0 4.6-3.2 7-8.3 7zm.2-11.3h-3v9.5l2.9-.1c3.9-.1 6-1.6 6-4.8.1-3-2.1-4.6-5.9-4.6zM52.7 71.3l-1.2 3.3c-1.4 3.7-2.8 4.7-4.9 4.7-1.1 0-2-.3-2.9-.7l.6-1.9c.7.4 1.5.7 2.3.7 1.1 0 2-.6 3.1-3.5l1-2.7-5.9-14.9H47l4.7 12.5 4.7-12.5h2.1l-5.8 15z">
+                                </path>
+                                <path fill="#EE4C2C"
+                                    d="M65.5 52.8v18.7h-2.1V52.8h-7.3v-2h16.6v2h-7.2zM78.8 71.8c-4.2 0-7.3-3.1-7.3-7.9s3.2-8 7.5-8 7.3 3.1 7.3 7.9c-.1 4.8-3.3 8-7.5 8zm0-14c-3.2 0-5.3 2.5-5.3 6.1 0 3.7 2.1 6.2 5.3 6.2s5.3-2.5 5.3-6.1c.1-3.8-2-6.2-5.3-6.2zM91.4 71.4h-2.1V56.3l2.1-.5V59c1-1.9 2.4-3.2 4.4-3.2 1 0 1.9.3 2.7.7l-.5 1.9c-.7-.4-1.5-.7-2.3-.7-1.6 0-3.1 1.2-4.3 3.9v9.8zM106.5 71.8c-4.6 0-7.4-3.3-7.4-7.9 0-4.7 3.1-8 7.4-8 1.8 0 3.4.5 4.7 1.3l-.5 1.8c-1.1-.8-2.6-1.2-4.2-1.2-3.3 0-5.3 2.4-5.3 6 0 3.7 2.1 6.1 5.3 6.1 1.5 0 3.1-.5 4.2-1.2l.5 1.9c-1.3.7-2.9 1.2-4.7 1.2zM123.9 71.4v-9.8c0-2.7-1.1-3.8-3.2-3.8-1.8 0-3.4.9-4.7 2.1v11.5h-2.1V49.2l2.1-.5v9.6c1.6-1.6 3.6-2.4 5.3-2.4 2.9 0 4.7 1.9 4.7 5.2v10.3h-2.1z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="footer-placeholder" data-filepath="../components/footer.txt"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/scripts.js"></script>
+</body>
+
+</html>

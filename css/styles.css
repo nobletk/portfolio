@@ -221,6 +221,12 @@ body {
 }
 
 /* Projects Modal section */
+.carousel-control-prev,
+.carousel-control-next {
+  height: 80%; 
+  opacity: 0.8; 
+}
+
 .carousel .carousel-control-prev-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23e83c38' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
 }
@@ -245,6 +251,15 @@ body {
 
 .modal-footer {
   --bs-modal-footer-border-color: var(--color-2);
+}
+
+.project-card-body {
+    color: var(--color-2) !important;
+    background-color: transparent !important;
+}
+
+.project-card-img {
+    border-color: 2px var(--color-2) !important;
 }
 
 .github-button svg {
@@ -377,4 +392,3 @@ footer {
     font-size: 2rem;
   }
 }
-
